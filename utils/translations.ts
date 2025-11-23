@@ -43,6 +43,7 @@ export const translations: Translations = {
         "Image Coming Soon": "Image Coming Soon",
         "Buy or Reserve at Belmobile": "Buy or Reserve at Belmobile",
         "All rights reserved": "All rights reserved",
+        "made_by_devforge": "Made with ❤️ by DevForge Systems.",
 
         // Header & Nav
         "Products": "Products",
@@ -501,6 +502,7 @@ export const translations: Translations = {
         "Image Coming Soon": "Image Bientôt Disponible",
         "Buy or Reserve at Belmobile": "Acheter ou Réserver chez Belmobile",
         "All rights reserved": "Tous droits réservés",
+        "made_by_devforge": "Fait avec ❤️ par DevForge Systems.",
 
         // Header & Nav
         "Products": "Produits",
@@ -958,6 +960,7 @@ export const translations: Translations = {
         "Image Coming Soon": "Afbeelding Binnenkort",
         "Buy or Reserve at Belmobile": "Kopen of Reserveren bij Belmobile",
         "All rights reserved": "Alle rechten voorbehouden",
+        "made_by_devforge": "Gemaakt met ❤️ door DevForge Systems.",
 
         // Header & Nav
         "Products": "Producten",
