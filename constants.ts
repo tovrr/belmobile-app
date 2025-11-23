@@ -19,7 +19,11 @@ import {
     SpeakerWaveIcon,
     UserGroupIcon,
     QuestionMarkCircleIcon,
-    NewspaperIcon
+    NewspaperIcon,
+    CpuChipIcon, // For HDD/Optical Drive
+    PowerIcon, // For Power Supply
+    UsbPlugIcon, // For USB Port
+    PuzzlePieceIcon // For Controller Repair
 } from '@heroicons/react/24/outline';
 
 export const MOCK_SHOPS: Shop[] = [
@@ -622,4 +626,46 @@ export const REPAIR_ISSUES = [
     { id: 'camera', label: 'Camera', icon: CameraIcon, desc: 'Blurry, spots, or broken lens', base: 70 },
     { id: 'water', label: 'Water Damage', icon: NoSymbolIcon, desc: 'Device got wet', base: 40 },
     { id: 'other', label: 'Other / Unknown', icon: WrenchScrewdriverIcon, desc: 'Diagnostic required', base: 30 },
+    // Console Specific Issues (PS5)
+    { id: 'optical_drive', label: 'Optical Drive Replacement', icon: CpuChipIcon, desc: 'Blu-ray drive replacement', base: 150 },
+    { id: 'hdd_replacement', label: 'SSD/HDD Replacement', icon: CpuChipIcon, desc: 'Internal storage replacement', base: 120 },
+    { id: 'power_supply', label: 'Power Supply Replacement', icon: PowerIcon, desc: 'Internal power unit repair', base: 100 },
+    { id: 'hdmi_port', label: 'HDMI Port Repair', icon: TvIcon, desc: 'No signal or distorted image', base: 90 },
+    { id: 'usb_port', label: 'USB Port Repair', icon: UsbPlugIcon, desc: 'Controller/accessory not connecting', base: 70 },
+    { id: 'cleaning', label: 'Full Cleaning & Thermal Paste', icon: SparklesIcon, desc: 'Overheating or loud fan', base: 60 },
+    { id: 'controller_repair', label: 'Controller Repair (DualSense)', icon: PuzzlePieceIcon, desc: 'Drift, button issues, etc.', base: 50 },
 ];
+
+// --- DEVICE SPECIFIC REPAIR ISSUES MAP ---
+// This map defines which repair issues are applicable to which device types and models.
+// 'default' array applies to all models within that device type unless overridden.
+export const DEVICE_REPAIR_ISSUES_MAP: Record<string, Record<string, string[]>> = {
+    smartphone: {
+        default: ['screen', 'battery', 'charging', 'audio', 'camera', 'water', 'other'],
+    },
+    tablet: {
+        default: ['screen', 'battery', 'charging', 'audio', 'camera', 'water', 'other'],
+    },
+    laptop: {
+        default: ['screen', 'battery', 'charging', 'audio', 'water', 'other'], // Laptops have screens, but camera/audio might be different
+    },
+    smartwatch: {
+        default: ['screen', 'battery', 'water', 'other'],
+    },
+    console: {
+        default: ['charging', 'audio', 'water', 'other'], // Generic console issues
+        'PlayStation 5 (Disc)': [
+            'optical_drive', 'hdd_replacement', 'power_supply', 'hdmi_port', 'usb_port', 'cleaning', 'controller_repair', 'other'
+        ],
+        'PlayStation 5 (Digital)': [
+            'hdd_replacement', 'power_supply', 'hdmi_port', 'usb_port', 'cleaning', 'controller_repair', 'other'
+        ],
+        'PlayStation 4 Pro': ['hdd_replacement', 'power_supply', 'hdmi_port', 'usb_port', 'cleaning', 'other'],
+        'PlayStation 4 Slim': ['hdd_replacement', 'power_supply', 'hdmi_port', 'usb_port', 'cleaning', 'other'],
+        'Xbox Series X': ['hdd_replacement', 'power_supply', 'hdmi_port', 'usb_port', 'cleaning', 'other'],
+        'Xbox Series S': ['hdd_replacement', 'power_supply', 'hdmi_port', 'usb_port', 'cleaning', 'other'],
+        'Switch OLED': ['screen', 'battery', 'charging', 'audio', 'water', 'other'], // Portable console
+        'Switch V2': ['screen', 'battery', 'charging', 'audio', 'water', 'other'], // Portable console
+        'Switch Lite': ['screen', 'battery', 'charging', 'audio', 'water', 'other'], // Portable console
+    },
+};
