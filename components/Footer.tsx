@@ -148,6 +148,7 @@ const Footer: React.FC = () => {
 
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
                     <p>&copy; {new Date().getFullYear()} Belmobile.be. {t('All rights reserved')}.</p>
+                    <p className="mt-2">Fait avec ❤️ par DevForge Systems.</p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
                         <Link to={`/${language}/terms`} className="hover:text-white transition-colors">{t('Privacy Policy')}</Link>
                         <Link to={`/${language}/terms`} className="hover:text-white transition-colors">{t('Terms of Service')}</Link>
