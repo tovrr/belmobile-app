@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MetaTags from '../components/MetaTags';
 import Hero from '../components/Hero';
 import ProductCard from '../components/ProductCard';
 import ReviewsSection from '../components/ReviewsSection';
@@ -18,6 +19,10 @@ const Home: React.FC = () => {
 
     return (
         <div className="bg-gray-50 dark:bg-deep-space transition-colors duration-300">
+            <MetaTags 
+                title={t('meta_home_title')}
+                description={t('meta_home_description')}
+            />
             <Hero />
 
             {/* Trust Signals - Glass Strip */}
