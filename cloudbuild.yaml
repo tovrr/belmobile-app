@@ -1,11 +1,11 @@
 steps:
 # 1. Build the container image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/frontend:$COMMIT_SHA', '.']
+  args: ['build', '-t', 'europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/frontend:$BUILD_ID', '.']
 
 # 2. Push the container image to Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/frontend:$COMMIT_SHA']
+  args: ['push', 'europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/frontend:$BUILD_ID']
 
 # 3. Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -14,10 +14,10 @@ steps:
     - 'run'
     - 'deploy'
     - 'frontend'
-    - '--image=europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/frontend:$COMMIT_SHA'
+    - '--image=europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/frontend:$BUILD_ID'
     - '--region=europe-west1'
     - '--platform=managed'
     - '--quiet'
 
 images:
-- 'europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/frontend:$COMMIT_SHA'
+- 'europe-west1-docker.pkg.dev/${PROJECT_ID}/cloud-run-source-deploy/frontend:$BUILD_ID'
