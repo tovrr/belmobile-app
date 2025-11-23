@@ -20,10 +20,10 @@ import {
     UserGroupIcon,
     QuestionMarkCircleIcon,
     NewspaperIcon,
-    CpuChipIcon, // For HDD/Optical Drive
-    PowerIcon, // For Power Supply
-    UsbPlugIcon, // For USB Port
-    PuzzlePieceIcon // For Controller Repair
+    WrenchScrewdriverIcon as CpuChipIcon, // Fallback Icon
+    BoltIcon as PowerIcon, // Fallback Icon
+    WrenchScrewdriverIcon as UsbPlugIcon, // Fallback Icon
+    WrenchScrewdriverIcon as PuzzlePieceIcon // Fallback Icon
 } from '@heroicons/react/24/outline';
 
 export const MOCK_SHOPS: Shop[] = [
