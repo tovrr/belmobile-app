@@ -480,7 +480,13 @@ const BuybackRepair: React.FC<BuybackRepairProps> = ({ type }) => {
             )}
             <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{t("Select all that apply")}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                {REPAIR_ISSUES.map((issue) => {
+                {REPAIR_ISSUES.filter(issue => {
+                    // Only show screen repair for devices that have screens
+                    if (issue.id === 'screen') {
+                        return ['smartphone', 'tablet', 'laptop', 'watch'].includes(deviceType);
+                    }
+                    return true; // Show all other issues
+                }).map((issue) => {
                     const isSelected = repairIssues.includes(issue.id);
                     const price = getSingleIssuePrice(issue.id);
 
